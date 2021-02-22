@@ -1,2 +1,2 @@
-# Multiple_Inline_Insert_into_Mysql_using_Ajax_JQuery_in_PHP
+# multiinsertion utilisant jquery ajax php mysql
 
