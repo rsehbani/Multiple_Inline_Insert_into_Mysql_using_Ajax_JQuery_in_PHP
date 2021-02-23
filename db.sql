@@ -3,11 +3,11 @@
 --
 
 CREATE TABLE IF NOT EXISTS `item` (
-  `item_id` int(11) NOT NULL,
-  `item_name` varchar(250) NOT NULL,
-  `item_code` varchar(250) NOT NULL,
-  `item_description` text NOT NULL,
-  `item_price` varchar(30) NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `code` varchar(250) NOT NULL,
+  `description` text NOT NULL,
+  `price` varchar(30) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
