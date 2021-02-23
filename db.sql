@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `item` (
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`item_id`, `item_name`, `item_code`, `item_description`, `item_price`) VALUES
+INSERT INTO `item` (`id`, `name`, `code`, `description`, `price`) VALUES
 (1, 'Grease', 'HP38AST', 'General purpose Grease', '50'),
 (2, 'Adhesive Epoxy', 'AS38DM33', 'Sealing epoxy', '20'),
 (3, 'Connector 2 Way', 'PH848383', 'To be used for power supply connection in ABB Molding Machine', '500'),
@@ -35,7 +35,7 @@ INSERT INTO `item` (`item_id`, `item_name`, `item_code`, `item_description`, `it
 -- Indexes for table `item`
 --
 ALTER TABLE `item`
-  ADD PRIMARY KEY (`item_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -45,4 +45,4 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;

@@ -1,30 +1,46 @@
 <?php
 //insert.php
-$connect = mysqli_connect("localhost", "root", "xigo1967", "testing");
-if(isset($_POST["item_name"]))
+$connect = new PDO("mysql:host=localhost;dbname=testing", "root", "xigo1967");
+
+
+if(isset($_POST["id"]))
 {
- $item_name = $_POST["item_name"];
- $item_code = $_POST["item_code"];
- $item_desc = $_POST["item_desc"];
- $item_price = $_POST["item_price"];
+ $name = $_POST["name"];
+ $code = $_POST["code"];
+ $desc = $_POST["desc"];
+ $price = $_POST["price"];
+ $id = $_POST['id'];
  $query = '';
- for($count = 0; $count<count($item_name); $count++)
+ for($count = 0; $count<count($name); $count++)
  {
-  $item_name_clean = mysqli_real_escape_string($connect, $item_name[$count]);
-  $item_code_clean = mysqli_real_escape_string($connect, $item_code[$count]);
-  $item_desc_clean = mysqli_real_escape_string($connect, $item_desc[$count]);
-  $item_price_clean = mysqli_real_escape_string($connect, $item_price[$count]);
-  if($item_name_clean != '' && $item_code_clean != '' && $item_desc_clean != '' && $item_price_clean != '')
+   /*
+  $name = mysqli_real_escape_string($connect, $name[$count]);
+  $code = mysqli_real_escape_string($connect, $code[$count]);
+  $desc = mysqli_real_escape_string($connect, $desc[$count]);
+  $price = mysqli_real_escape_string($connect, $price[$count]);
+  */
+  if($name != '' && $code != '' && $desc != '' && $price != '')
   {
-   $query .= '
-   INSERT INTO item(item_name, item_code, item_description, item_price) 
-   VALUES("'.$item_name_clean.'", "'.$item_code_clean.'", "'.$item_desc_clean.'", "'.$item_price_clean.'"); 
-   ';
-  }
+    $data = array(
+        ':name'   => $name[$count],
+        ':code'  => $code[$count],
+        ':desc'  => $desc[$count],
+        ':price' => $price[$count],
+       
+        ':id'   => $id[$count],
+       );
+       $query = "
+       UPDATE item
+       SET name = :name, code = :code, price = :price , description= :desc
+       WHERE id = :id
+       ";
+       $statement = $connect->prepare($query);
+       $statement->execute($data);
+      }
  }
  if($query != '')
  {
-  if(mysqli_multi_query($connect, $query))
+  if($statement)
   {
    echo 'Item Data Inserted';
   }
@@ -38,4 +54,10 @@ if(isset($_POST["item_name"]))
   echo 'All Fields are Required';
  }
 }
+
+
+
+
+
+
 ?>
